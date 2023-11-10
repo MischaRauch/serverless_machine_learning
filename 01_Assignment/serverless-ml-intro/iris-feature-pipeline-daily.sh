@@ -12,6 +12,8 @@ BASEDIR=$(dirname "$0")
 # Activate a virtual environment if needed
 # source "$BASEDIR/venv/bin/activate"
 
+# Use the environment variable
+API_KEY=$HOPSWORKS_API_KEY
 # Or if your Python script reads the API key from an environment variable:
 export HOPSWORKS_API_KEY=$API_KEY
 
