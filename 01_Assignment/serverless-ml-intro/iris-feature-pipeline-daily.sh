@@ -16,4 +16,4 @@ BASEDIR=$(dirname "$0")
 export HOPSWORKS_API_KEY=$API_KEY
 
 # Execute a Python script, for instance, to train a model using the Iris dataset
-python "$BASEDIR/train_iris_model.py"
+python "$BASEDIR/iris-feature-pipeline-daily.py"
