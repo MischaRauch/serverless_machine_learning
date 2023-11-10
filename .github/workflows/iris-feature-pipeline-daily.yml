@@ -3,7 +3,7 @@ name: iris-feature-pipeline-daily
 on:
   workflow_dispatch:
   schedule:
-    - cron: '50 13 * * *'
+    - cron: '52 12 * * *'
 
 jobs:
   test_schedule:
