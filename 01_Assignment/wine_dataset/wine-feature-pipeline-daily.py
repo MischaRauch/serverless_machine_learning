@@ -76,8 +76,8 @@ def get_sample_from_distribution_wine():
     'sulphates': [0.4865536315536315, 0.10591379697084427],
     'alcohol': [10.552524450853296, 1.1920626760099189]
     }
-    quallity_distribution_white = {"6":0.448755, "5":0.297468, "7":0.179665, "8":0.035729,
-                                   "4":0.033279, "3":0.004083, "9":0.001021}
+    quallity_distribution_white = {6.0:0.448755, 5.0:0.297468, 7.0:0.179665, 8.0:0.035729,
+                                   4.0:0.033279, 3.0:0.004083, 9.0:0.001021}
 
     features_distribution_red = {
     'fixed_acidity': [7.717690058479532, 0.9601701519936446],
@@ -92,8 +92,8 @@ def get_sample_from_distribution_wine():
     'sulphates': [0.6233040935672515, 0.10275796199492253],
     'alcohol': [10.407748538011695, 1.0509487679974698]
     }
-    quallity_distribution_red = {"5":0.425891, "6":0.398999, "7":0.124453, "4":0.033146,
-                                 "8":0.011257, "3":0.006254}
+    quallity_distribution_red = {5.0:0.425891, 6.0:0.398999, 7.0:0.124453, 4.0:0.033146,
+                                 8.0:0.011257, 3.0:0.006254}
 
     # For the categorical 'type' column, you need to provide the distribution. 
     type_distribution = {'white': 0.858736, 'red': 0.141264}
@@ -120,6 +120,7 @@ def get_sample_from_distribution_wine():
 
     # Display the new data point
     #print(new_data_df)
+    print(new_data_df)
     return new_data_df
 
 
