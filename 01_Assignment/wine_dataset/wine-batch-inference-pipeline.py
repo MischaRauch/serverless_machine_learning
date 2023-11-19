@@ -114,7 +114,7 @@ def g():
         results = confusion_matrix(labels, predictions)
         print("RSULTS: ",results)
         df_cm = pd.DataFrame(results, ['True 3', 'True 4', 'True 5', 'True 6', 'True 7', 'True 8', 'True 9'],
-                             ['True 3', 'True 4', 'True 5', 'True 6', 'True 7', 'True 8', 'True 9'])
+                             ['Pred 3', 'Pred 4', 'Pred 5', 'Pred 6', 'Pred 7', 'Pred 8', 'Pred 9'])
     
         cm = sns.heatmap(df_cm, annot=True)
         fig = cm.get_figure()

@@ -63,27 +63,47 @@ def get_sample_from_distribution_wine():
     import pandas as pd
 
     # Define your mean and std for each column
-    features_distribution = {
-    'fixed_acidity': [6.974958694754234, 0.8783412896705036],
-    'volatile_acidity': [0.2989859562164395, 0.11510431133596595],
-    'citric_acid': [0.3158364312267658, 0.10104684699102408],
-    'residual_sugar': [5.557362660057827, 4.500478870551202],
-    'chlorides': [0.04776352746798844, 0.016409034138339804],
-    'free_sulfur_dioxide': [31.842110698058654, 15.644928810505371],
-    'total_sulfur_dioxide': [124.81990912845932, 50.17105209423161],
-    'density': [0.9941852767451467, 0.0027659851769307286],
-    'ph': [3.2100681536555142, 0.14793746725556323],
-    'sulphates': [0.5058715406856671, 0.11572175643265356],
-    'alcohol': [10.532072834912846, 1.1741406701134156],
-    'quality': [5.821354812061132, 0.7651886817920075]
+    features_distribution_white = {
+    'fixed_acidity': [6.852777777777778, 0.8007807437338395],
+    'volatile_acidity': [0.2721693121693121, 0.08951306653042747],
+    'citric_acid': [0.3232419432419432, 0.09302224974478986],
+    'residual_sugar': [6.069708994708995, 4.634282967828375],
+    'chlorides': [0.0430937950937951, 0.01145275534457891],
+    'free_sulfur_dioxide': [34.25396825396825, 15.087977182325284],
+    'total_sulfur_dioxide': [136.8893698893699, 41.42923547008297],
+    'density': [0.9938492953342953, 0.0027776371820253634],
+    'ph': [3.1894997594997596, 0.14275036415415457],
+    'sulphates': [0.4865536315536315, 0.10591379697084427],
+    'alcohol': [10.552524450853296, 1.1920626760099189],
+    'quality': [5.848244348244348, 0.7707114864014636]
     }
 
-    # For numerical columns, use the specified mean and std to sample from a Gaussian distribution
-    new_numerical_data = {column: np.random.normal(mean, std) for column, (mean, std) in features_distribution.items()}
+    features_distribution_red = {
+    'fixed_acidity': [7.717690058479532, 0.9601701519936446],
+    'volatile_acidity': [0.4620029239766082, 0.11894457777866924],
+    'citric_acid': [0.2708187134502924, 0.13168322120676834],
+    'residual_sugar': [2.442836257309941, 1.2378368096371026],
+    'chlorides': [0.07615058479532164, 0.013052405340114065],
+    'free_sulfur_dioxide': [17.180555555555557, 9.930354207357635],
+    'total_sulfur_dioxide': [51.45029239766082, 33.41704420281052],
+    'density': [0.9962276900584796, 0.0015504684741867987],
+    'ph': [3.3351023391812866, 0.11341428763051377],
+    'sulphates': [0.6233040935672515, 0.10275796199492253],
+    'alcohol': [10.407748538011695, 1.0509487679974698],
+    'quality': [5.657894736842105, 0.7096360071864578]
+    }
 
     # For the categorical 'type' column, you need to provide the distribution. 
-    type_distribution = {'white': 0.858736, 'red': 0.141264}  # Replace with actual distribution
+    type_distribution = {'white': 0.858736, 'red': 0.141264}
     new_categorical_data = {'type': np.random.choice(list(type_distribution.keys()), p=list(type_distribution.values()))}
+    
+    if new_categorical_data == "white":
+        # For numerical columns, use the specified mean and std to sample from a Gaussian distribution
+        new_numerical_data = {column: np.random.normal(mean, std) for column, (mean, std) in features_distribution_white.items()}
+    else:
+        # For numerical columns, use the specified mean and std to sample from a Gaussian distribution
+        new_numerical_data = {column: np.random.normal(mean, std) for column, (mean, std) in features_distribution_red.items()}
+    
 
     # Combine both dictionaries into one data point
     new_data_point = {**new_numerical_data, **new_categorical_data}
