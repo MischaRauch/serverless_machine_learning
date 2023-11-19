@@ -110,7 +110,7 @@ def g():
 
     # Only create the confusion matrix when our iris_predictions feature group has examples of all 3 iris flowers
     print("Number of different wine predictions to date: " + str(predictions.value_counts().count()))
-    if predictions.value_counts().count() >= 3:
+    if predictions.value_counts().count() >= 7:
         results = confusion_matrix(labels, predictions)
         print("RSULTS: ",results)
         df_cm = pd.DataFrame(results, ['True 3', 'True 4', 'True 5', 'True 6', 'True 7', 'True 8', 'True 9'],
