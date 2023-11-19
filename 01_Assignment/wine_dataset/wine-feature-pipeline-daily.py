@@ -74,9 +74,10 @@ def get_sample_from_distribution_wine():
     'density': [0.9938492953342953, 0.0027776371820253634],
     'ph': [3.1894997594997596, 0.14275036415415457],
     'sulphates': [0.4865536315536315, 0.10591379697084427],
-    'alcohol': [10.552524450853296, 1.1920626760099189],
-    'quality': [5.848244348244348, 0.7707114864014636]
+    'alcohol': [10.552524450853296, 1.1920626760099189]
     }
+    quallity_distribution_white = {"6":0.448755, "5":0.297468, "7":0.179665, "8":0.035729,
+                                   "4":0.033279, "3":0.004083, "9":0.001021}
 
     features_distribution_red = {
     'fixed_acidity': [7.717690058479532, 0.9601701519936446],
@@ -89,13 +90,19 @@ def get_sample_from_distribution_wine():
     'density': [0.9962276900584796, 0.0015504684741867987],
     'ph': [3.3351023391812866, 0.11341428763051377],
     'sulphates': [0.6233040935672515, 0.10275796199492253],
-    'alcohol': [10.407748538011695, 1.0509487679974698],
-    'quality': [5.657894736842105, 0.7096360071864578]
+    'alcohol': [10.407748538011695, 1.0509487679974698]
     }
+    quallity_distribution_red = {"5":0.425891, "6":0.398999, "7":0.124453, "4":0.033146,
+                                 "8":0.011257, "3":0.006254}
 
     # For the categorical 'type' column, you need to provide the distribution. 
     type_distribution = {'white': 0.858736, 'red': 0.141264}
     new_categorical_data = {'type': np.random.choice(list(type_distribution.keys()), p=list(type_distribution.values()))}
+
+    if new_categorical_data == "white":
+        quality_score = {'quality': np.random.choice(list(quallity_distribution_white.keys()), p=list(quallity_distribution_white.values()))}    
+    else:
+        quality_score = {'quality': np.random.choice(list(quallity_distribution_red.keys()), p=list(quallity_distribution_red.values()))}    
     
     if new_categorical_data == "white":
         # For numerical columns, use the specified mean and std to sample from a Gaussian distribution
@@ -106,7 +113,7 @@ def get_sample_from_distribution_wine():
     
 
     # Combine both dictionaries into one data point
-    new_data_point = {**new_numerical_data, **new_categorical_data}
+    new_data_point = {**new_numerical_data, **new_categorical_data, **quality_score}
 
     # Convert the data point into a DataFrame
     new_data_df = pd.DataFrame([new_data_point])
