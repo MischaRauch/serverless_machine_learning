@@ -3,7 +3,7 @@ name: wine-feature-pipeline-daily
 on:
   workflow_dispatch:
   schedule:
-    - cron: '10 14 * * *'
+    - cron: '52 13 * * *'
 
 jobs:
   test_schedule:
